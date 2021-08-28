@@ -67,19 +67,19 @@
 				{
 					id: '1',
 					text: 'Go for Walk',
-					day: 'March 5th at 5.00pm',
+					day: 'Aug 29th at 5.00pm',
 					reminder: true,
 				},
 				{
 					id: '2',
 					text: 'Complete Project',
-					day: 'March 6th at 5:00pm',
+					day: 'Aug 30th at 5:00pm',
 					reminder: true,
 				},
 				{
 					id: '3',
 					text: 'Take a nap',
-					day: 'March 7th at 3:30pm',
+					day: 'Aug 31th at 3:30pm',
 					reminder: false,
 				},
 			];
