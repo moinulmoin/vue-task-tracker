@@ -1,9 +1,6 @@
 <template>
-	<div
-		:class="['task', task.reminder ? 'reminder' : '']"
-		@click="$emit('toggle-task', task.id)"
-	>
-		<div>
+	<div :class="['task', task.reminder ? 'reminder' : '']">
+		<div @click="$emit('toggle-task', task.id)" class="task-details">
 			<h3>{{ task.text }}</h3>
 			<p>{{ task.day }}</p>
 		</div>
@@ -40,8 +37,11 @@
 		padding: 1.2rem 2rem;
 		cursor: pointer;
 		display: flex;
-		justify-content: space-between;
 		align-items: center;
+		gap: 2rem;
+	}
+	.task-details {
+		flex-grow: 1;
 	}
 	.task.reminder {
 		border-left: 0.5rem solid royalblue;

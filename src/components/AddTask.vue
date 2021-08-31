@@ -20,8 +20,13 @@
 			/>
 		</div>
 		<div class="form-control form-control-check">
-			<input type="checkbox" name="reminder" v-model="reminder" />
-			<label>Set Reminder</label>
+			<input
+				type="checkbox"
+				name="reminder"
+				id="reminder"
+				v-model="reminder"
+			/>
+			<label for="reminder">Set Reminder</label>
 		</div>
 
 		<input type="submit" value="Save Task" class="btn btn-block" />
