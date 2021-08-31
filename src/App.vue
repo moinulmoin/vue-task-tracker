@@ -1,5 +1,5 @@
 <template>
-	<h1>{{ title }}</h1>
+	<h1 v-once>{{ title }}</h1>
 	<div class="container">
 		<Header
 			title="Task Tracker"
