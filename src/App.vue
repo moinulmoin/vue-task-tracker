@@ -42,68 +42,47 @@
 			};
 		},
 		methods: {
-			async addTask(task) {
-				const res = await fetch('/api/tasks', {
-					method: 'POST',
-					body: JSON.stringify(task),
-					headers: {
-						'Content-Type': 'application/json',
-					},
-				});
-
-				const newTask = await res.json();
-
-				this.tasks.push(newTask);
+			addTask(task) {
+				this.tasks.push(task);
 				// this.tasks = [...this.tasks, task];
 			},
 			toggleAddTask() {
 				this.showAddTask = !this.showAddTask;
 			},
-			async deleteTask(id) {
+			deleteTask(id) {
 				if (confirm('Are you sure?')) {
-					const res = await fetch(`/api/tasks/${id}`, {
-						method: 'DELETE',
-					});
-
-					res.status === 200
-						? (this.tasks = this.tasks.filter(
-								(task) => task.id !== id
-						  ))
-						: alert('Something went wrong');
+					this.tasks = this.tasks.filter((task) => task.id !== id);
 				}
 			},
-			async toggleTask(id) {
-				const res = await fetch(`/api/tasks/${id}`);
-
-				const task = await res.json();
-
-				const updatingTask = { ...task, reminder: !task.reminder };
-
-				const res2 = await fetch(`/api/tasks/${id}`, {
-					method: 'PUT',
-					body: JSON.stringify(updatingTask),
-					headers: {
-						'Content-Type': 'application/json',
-					},
-				});
-
-				const updatedTask = await res2.json();
-
+			toggleTask(id) {
 				this.tasks = this.tasks.map((task) =>
 					task.id === id
-						? { ...task, reminder: updatedTask.reminder }
+						? { ...task, reminder: !task.reminder }
 						: task
 				);
 			},
-			async fetchTasks() {
-				const response = await fetch('/api/tasks');
-				const tasks = await response.json();
-				// console.log(tasks);
-				return tasks;
-			},
 		},
-		async created() {
-			this.tasks = await this.fetchTasks();
+		created() {
+			this.tasks = [
+				{
+					id: '1',
+					text: 'Go for Walk',
+					day: 'March 5th at 5.00pm',
+					reminder: true,
+				},
+				{
+					id: '2',
+					text: 'Complete Project',
+					day: 'March 6th at 5:00pm',
+					reminder: true,
+				},
+				{
+					id: '3',
+					text: 'Take a nap',
+					day: 'March 7th at 3:30pm',
+					reminder: false,
+				},
+			];
 		},
 	};
 </script>
